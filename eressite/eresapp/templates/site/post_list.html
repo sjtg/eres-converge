@@ -1,18 +1,15 @@
-<html>
-    <head>
-        <title>Eres site</title>
-    </head>
-    <body>
-        <div>
-          <h1><a href="/">Research Ethics</a></h1>
-        </div>
-
-    {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
-    </body>
-</html>
+{% extends 'site/base.html' %}
+      <div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+          {% block content %}
+      {% for post in posts %}
+          <div class="post">
+              <div class="date">
+                  {{ post.published_date }}
+              </div>
+              <h1><a href="">{{ post.title }}</a></h1>
+              <p>{{ post.text|linebreaksbr }}</p>
+          </div>
+          {% endfor %}
+   {% endblock %}
