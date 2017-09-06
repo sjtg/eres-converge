@@ -15,6 +15,7 @@
      <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
        <div class="row">
            <div class="col-md-8">
+
              {% block content %}
        <div class="post">
            {% if post.published_date %}
@@ -22,7 +23,7 @@
                    {{ post.published_date }}
                </div>
            {% endif %}
-           <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+           
            <h1>{{ post.title }}</h1>
            <p>{{ post.text|linebreaksbr }}</p>
        </div>
@@ -32,8 +33,18 @@
 {% endif %}
 
    {% endblock %}
+
+
            </div>
        </div>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+       {% block javascript %}
+       <script src="{% static 'js/vendor/jquery.ui.widget.js' %}"></script>
+       <script src="{% static 'js/jquery.iframe-transport.js' %}"></script>
+       <script src="{% static 'js/jquery.fileupload.js' %}"></script>
+       <script src="{% static 'js/basic-upload.js' %}"></script>
+        {% endblock %}
    </div>
     </body>
 </html>
