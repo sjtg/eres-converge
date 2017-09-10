@@ -5,9 +5,13 @@
 {% block content %}
 
 <button type="button" class="btn btn-primary js-upload-photos">
-  <span class="glyphicon glyphicon-cloud-upload"></span>Upload photos
+  <span class="glyphicon glyphicon-cloud-upload"></span>Upload file
 </button>
 
+<div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
+  <span class="glyphicon glyphicon-arrow-down" style="font-size: 4rem;"></span>
+  <h3>Drop file Here to Upload</h3>
+</div>
 
 <input id="fileupload" type="file" name="file" multiple
        style="display: none;"
