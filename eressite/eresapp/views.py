@@ -31,18 +31,17 @@ def home(request):
 	return render(request, 'site/index.html', {})
 
 def signup(request):
-    if request.method == 'POST':
-        form  = SignUpForm(request.POST)
-	if form.is_valid():
- 	    form.save()
-	    username = form.cleaned_data.get('username')
-	    raw_passwprd = form.cleaned_data.get('password')
-	    user = authenticate(username=username, password=raw_password)
-	    login(request, user)
-	    return redirect('student')
+	if request.method == 'POST':
+		form = SignUpForm(request.POST)
+		if form.is_valid():
+	 	    form.save()
+		    username = form.cleaned_data.get('username')
+		    raw_password = form.cleaned_data.get('password1')
+		    user = authenticate(username=username, password=raw_password)
+		    login(request, user)
+		    return redirect('student')
 	else:
 	    form = SignUpForm()
-
 	return render(request, 'site/signup.html', {'form':form})
 
 
