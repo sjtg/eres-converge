@@ -1,1 +1,3 @@
-# eres-converge research and ethic website
+# eres-converge research dashboard application (web application)
+
+
