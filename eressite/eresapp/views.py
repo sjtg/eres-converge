@@ -45,6 +45,8 @@ def signup(request):
 
 	return render(request, 'site/signup.html', {'form':form})
 
+
+
 def message( request):
 	return render(request, 'site/message.html')
 
