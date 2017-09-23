@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth import login, authenticate
+# from django.contrib.auth import login, authenticate
+#
+# from django.contrib.auth.forms import UserCreationForm
 
-from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse, HttpResponseRedirect
 
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 
 from django.utils import timezone
 from .models import Post
@@ -15,11 +17,18 @@ from .forms import PostForm
 from django.http import JsonResponse
 from django.views import View
 
+# from django.contrib.auth.decorators import login_required
+#
+# from django.core.urlresolvers import reverse
+
 from .forms import PhotoForm
 from .models import Photo
 
 
 # Create your views here.
+
+def home(request):
+	return render(request, 'site/index.html', {})
 
 def signup(request):
     if request.method == 'POST':
@@ -35,6 +44,47 @@ def signup(request):
 	    form = UserCreationForm()
 
 	return render(request, 'site/signup.html', {'form':form})
+
+
+def student(request):
+	return render(request, 'site/student.html', {})
+
+def reviewer(request):
+	return render(request, 'site/reviewer.html', {})
+
+# @login_required
+# def reviewer(request):
+#     user = request.user
+#     context = {'user': user}
+#     template = 'site/reviewer.html'
+#
+#     form = PostForm(request.POST, request.FILES)
+#         # Load documents for the list page
+#     documents = Post.objects.all()
+#
+#      #Render list page with the documents and the form
+#     return render_to_response(
+#         'site/reviewer.html',
+#         {'documents': documents, 'form': form},
+#         context_instance=RequestContext(request)
+#     )
+#
+# @login_required
+# def student(request):
+#     user = request.user
+#     context = {'user': user}
+#     template = 'site/student.html'
+#
+#     form = PostForm(request.POST, request.FILES)
+#         # Load documents for the list page
+#     documents = Post.objects.all()
+#
+#      #Render list page with the documents and the form
+#     return render_to_response(
+#         'site/student.html',
+#         {'documents': documents, 'form': form},
+#         context_instance=RequestContext(request)
+#     )
 
 
 def post_list(request):
@@ -68,7 +118,7 @@ def post_edit(request, pk):
 class UploadView(View):
     def get(self, request):
         photos_list = Photo.objects.all()
-        return render(self.request, 'site/index.html', {'photos': photos_list})
+        return render(self.request, 'site/uploads.html', {'photos': photos_list})
 
     def post(self, request):
         form = PhotoForm(self.request.POST, self.request.FILES)

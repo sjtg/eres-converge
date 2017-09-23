@@ -1,52 +1,200 @@
 {% extends 'site/base2.html' %}
 
-
-
 {% block content %}
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Eres Converge</a>
+            </div>
 
-<button type="button" class="btn btn-primary js-upload-photos">
-  <span class="glyphicon glyphicon-cloud-upload"></span>Upload file
-</button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active" class="dropdown">
+                    <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="">Reviewer</a></li>
+                      <li><a href="">Students</a></li>
+                    </ul>
+                    </li>
+                    <li class="active">
+                        <a class="page-scroll" href="#aboutus">About Us</a>
+                    </li>
+                    <li class="active">
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                     <li class="active">
+                        <a class="page-scroll" href="#team">Team</a>
+                    </li>
+                    <li class="active">
+                       <a class="page-scroll" href="#announcement">Announcement</a>
+                   </li>
 
-<div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
-  <span class="glyphicon glyphicon-arrow-down" style="font-size: 4rem;"></span>
-  <h3>Drop file Here to Upload</h3>
-</div>
 
-<input id="fileupload" type="file" name="file" multiple
-       style="display: none;"
-       data-url="{% url 'upload' %}"
-       data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                     <li class="active">
+                        <a class="page-scroll" href="#directions">Directions</a>
+                    </li>
+                     <li class="active">
+                        <a href="/contact">Contact</a>
+                    </li>
+                    <li class="active">
 
-
-<table id="gallery" class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Photo</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for photo in photos %}
-      <tr>
-        <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Uploading...</h4>
-      </div>
-      <div class="modal-body">
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                   </li>
+                  </ul>
+                </div>
+            <!-- /.navbar-collapse -->
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- /.container-fluid -->
+    </nav>
 
-{% endblock  %}
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="animated fadeInUp" id="title_header">
+                    ERES CONVERGE IRB
+                    <h2>RESEARCH ETHICS</h2>
+                </div>
+                <a href="#aboutus" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="bg-primary" id="aboutus">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">About us!</h2>
+                    <hr>
+                    <h3>ERES CONVERGE IRB</h3>
+                    <hr>
+                    <p class="text-faded">
+                    ERES Converge is the only private IRB currently registered in Zambia. It is registered with the Office of Register of Companies in Lusaka Zambia.
+                    </p>
+
+                    <h3>Do they follow national/international guidelines?</h3>
+                    <hr class="underline">
+                    <p class="text-faded">
+                       ERES Converge IRB is accredited to the Office for Protection of Human Research Participants (OHRP) in the United States of America and so have an IRB number and a Federal Wide Assurance (FWA) number. As indicated above ERES Converge is registered as a Limited Company and has a Board of Directors.  It is locally accredited to the National Health Research Ethics Committee in the Zambia’s Ministry of Health which accredits all Research Ethics Committees and or IRBs in the country. The committee adheres to regulations as outlined in the Declaration of Helsinki, the Belmont Report, CIOMS and the International Guidelines for Biomedical Research. ERES Converge adheres strictly to International Standards of Good Clinical Practice.
+                    </p>
+
+                    <a href="/aboutus" class="btn btn-default btn-xl sr-button">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Services</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-md-offset-1 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                        <h3>Research</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6col-md-offset-1 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                        <h3>Ethics</h3>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-md-offset-1 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        <h3>Training</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <hr>
+                </div>
+            </div>
+            <div id ="team_padding" class="row">
+                <div class="col-sm-3">
+                    <div class="team-member">
+
+                        <h4>Dr. Esther Munalula-Nkandu </h4>
+                        <p class="text-muted">Board Chairperson</p>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team-member">
+
+                        <h4>Mrs. Sabina Luputa </h4>
+                        <p class="text-muted">Director - Business Administration </p>
+                    </div>
+                </div>
+
+        </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Community Members</p>
+                    <hr>
+                    <ul>
+                        <li>Bishop Watson Mutemi - Member/Community Representative </li>
+                        <li>Dr. Duncan Chanda - Member </li>
+                        <li>Dr. Geoffrey Kwenda - Member</li>
+                        <li>Dr. Grave Singogo - Member </li>
+                        <li>Mr. Jason Mwanza - Member</li>
+                        <li>Dr. James Munthali - Member</li>
+                        <li>Dr. Kaseya Chiyenu - Member</li>
+                        <li>Dr. Margaret Maimbolwa - Member</li>
+                        <li>Mrs. Mercy Mbewe - Member</li>
+                        <li>Dr. Victor Zulu - Member</li>
+                    </ul>
+                </div>
+
+                 <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Eres Converge Research Ethic Team</p>
+                    <hr>
+                    <ul>
+                        <li>Ms. Mumba Chintu - Administrator</li>
+                        <li>Mr. David Nkausu - Office Assistant</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="map" id="directions">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3846.433394085963!2d28.295834531046953!3d-15.40714262983941!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1469006944640" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
+           <div class="row">
+            <div id="contact_details" class="col-sm-5 col-md-offset-4">
+             <i class="fa fa-map-marker fa-2x" aria-hidden="true"> Plot No. 1 Cnr. Great East Road  Joseph Mwilwa Road | Rhodes Park Lusaka - Zambia.</i>
+            <i class="fa fa-phone-square fa-2x" aria-hidden="true"> Office : +260 955 155633 | +260 955 155634</i>
+            </div>
+
+            </div>
+            </div>
+    </section>
+
+
+    <section>
+
+    </section>
+{% endblock %}
