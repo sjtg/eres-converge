@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-# from django.contrib.auth import login, authenticate
-#
+from django.contrib.auth import login, authenticate
+
 # from django.contrib.auth.forms import UserCreationForm
+
+from .forms import SignUpForm
 
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -17,9 +19,7 @@ from .forms import PostForm
 from django.http import JsonResponse
 from django.views import View
 
-# from django.contrib.auth.decorators import login_required
-#
-# from django.core.urlresolvers import reverse
+
 
 from .forms import PhotoForm
 from .models import Photo
@@ -32,16 +32,16 @@ def home(request):
 
 def signup(request):
     if request.method == 'POST':
-        form  = UserCreationForm(request.POST)
+        form  = SignUpForm(request.POST)
 	if form.is_valid():
  	    form.save()
 	    username = form.cleaned_data.get('username')
 	    raw_passwprd = form.cleaned_data.get('password')
 	    user = authenticate(username=username, password=raw_password)
 	    login(request, user)
-	    return redirect('home')
+	    return redirect('student')
 	else:
-	    form = UserCreationForm()
+	    form = SignUpForm()
 
 	return render(request, 'site/signup.html', {'form':form})
 
@@ -56,41 +56,6 @@ def student( request):
 
 def reviewer(request):
 	return render(request, 'site/reviewer.html', {})
-
-# @login_required
-# def reviewer(request):
-#     user = request.user
-#     context = {'user': user}
-#     template = 'site/reviewer.html'
-#
-#     form = PostForm(request.POST, request.FILES)
-#         # Load documents for the list page
-#     documents = Post.objects.all()
-#
-#      #Render list page with the documents and the form
-#     return render_to_response(
-#         'site/reviewer.html',
-#         {'documents': documents, 'form': form},
-#         context_instance=RequestContext(request)
-#     )
-#
-# @login_required
-# def student(request):
-#     user = request.user
-#     context = {'user': user}
-#     template = 'site/student.html'
-#
-#     form = PostForm(request.POST, request.FILES)
-#         # Load documents for the list page
-#     documents = Post.objects.all()
-#
-#      #Render list page with the documents and the form
-#     return render_to_response(
-#         'site/student.html',
-#         {'documents': documents, 'form': form},
-#         context_instance=RequestContext(request)
-#     )
-
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
