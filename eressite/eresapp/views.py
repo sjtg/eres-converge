@@ -45,9 +45,12 @@ def signup(request):
 
 	return render(request, 'site/signup.html', {'form':form})
 
+def message( request):
+	return render(request, 'site/message.html')
 
-def student(request):
-	return render(request, 'site/student.html', {})
+
+def student( request):
+	return render(request, 'site/student.html')
 
 def reviewer(request):
 	return render(request, 'site/reviewer.html', {})

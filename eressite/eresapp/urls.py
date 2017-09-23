@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^upload/$', views.UploadView.as_view(), name='upload'),
+    url(r'^message/$', core_views.message, name='message'),
 
 ]

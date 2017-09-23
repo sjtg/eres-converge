@@ -11,4 +11,22 @@
   <li class="breadcrumb-item active">Reviewer</li>
 </ol>
 
+<table id="gallery" class="table table-bordered">
+  <thead class=”thead-inverse”>
+    <tr>
+      <th>Student</th>
+      <th>Document</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for photo in photos %}
+      <tr>
+        <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
 {% endblock  %}
