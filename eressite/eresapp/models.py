@@ -20,6 +20,7 @@ class Profile(models.Model):
      email_confirmed = models.BooleanField(default=False)
      cellphone= models.CharField(max_length=30, blank=True)
 
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
