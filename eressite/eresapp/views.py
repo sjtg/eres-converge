@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth import login, authenticate
 
-# from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
 
@@ -45,14 +45,14 @@ def signup(request):
 	return render(request, 'site/signup.html', {'form':form})
 
 
-
+@login_required
 def message( request):
 	return render(request, 'site/message.html')
 
-
+@login_required
 def student( request):
 	return render(request, 'site/student.html')
-
+@login_required
 def reviewer(request):
 	return render(request, 'site/reviewer.html', {})
 
