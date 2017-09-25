@@ -45,9 +45,11 @@ def signup(request):
 	return render(request, 'site/signup.html', {'form':form})
 
 
+
+
 @login_required
-def message( request):
-	return render(request, 'site/message.html')
+def dashboard( request):
+	return render(request, 'site/dashboard.html')
 
 @login_required
 def student( request):
