@@ -1,0 +1,31 @@
+{% extends 'site/base3.html' %}
+
+{% block content %}
+
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">{{user.username }}</li>
+      </ol>
+
+      <table id="gallery" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Document</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for photo in photos %}
+            <tr>
+              <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+{% endblock  %}
+
+

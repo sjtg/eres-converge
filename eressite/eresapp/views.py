@@ -51,12 +51,6 @@ def signup(request):
 def dashboard( request):
 	return render(request, 'site/dashboard.html')
 
-@login_required
-def student( request):
-	return render(request, 'site/student.html')
-@login_required
-def reviewer(request):
-	return render(request, 'site/reviewer.html', {})
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
