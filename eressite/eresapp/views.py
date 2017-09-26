@@ -82,8 +82,8 @@ def post_edit(request, pk):
 
 class UploadView(View):
     def get(self, request):
-        photos_list = Photo.objects.all()
-        return render(self.request, 'site/uploads.html', {'photos': photos_list})
+        document_list = Photo.objects.all()
+        return render(self.request, 'site/uploads.html', {'photos': document_list})
 
     def post(self, request):
         form = PhotoForm(self.request.POST, self.request.FILES)
