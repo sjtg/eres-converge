@@ -2,14 +2,18 @@
 
 {% block content %}
 
+ <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">{{user.username}}</li>
+      </ol>
+
+
 <button type="button" class="btn btn-primary js-upload-photos">
   <span class="glyphicon glyphicon-cloud-upload"></span>Upload file
 </button>
-
-<div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
-  <span class="glyphicon glyphicon-arrow-down" style="font-size: 4rem;"></span>
-  <h3>Drop file Here to Upload</h3>
-</div>
 
 <input id="fileupload" type="file" name="file" multiple
        style="display: none;"
@@ -20,13 +24,17 @@
 <table id="gallery" class="table table-bordered">
   <thead>
     <tr>
-      <th>Photo</th>
+      <th>Document</th>
+      <th>Date</th>
+      <th>Download</th>
     </tr>
   </thead>
   <tbody>
     {% for photo in photos %}
       <tr>
-        <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+        <td>{{ photo.file.name }}</td>
+	<td>{{photo.uploaded_at}}</td>
+	<td><a href="{{ photo.file.url }}">Download</a></td>
       </tr>
     {% endfor %}
   </tbody>

@@ -48,8 +48,10 @@ def signup(request):
 
 
 @login_required
-def dashboard( request):
-	return render(request, 'site/dashboard.html')
+def dashboard(request):
+	document_list = Photo.objects.all()
+        return render(request, 'site/dashboard.html', {'photos': document_list})
+	#return render(request, 'site/dashboard.html')
 
 
 def post_list(request):
@@ -89,6 +91,7 @@ class UploadView(View):
         form = PhotoForm(self.request.POST, self.request.FILES)
         if form.is_valid():
             photo = form.save()
+	    photo.uploaded_at = timezone.now()
             data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
         else:
             data = {'is_valid': False}
