@@ -59,11 +59,11 @@ def dashboard_reviewer(request):
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'site/post_list.html', {'posts': posts})
+    return render(request, 'site/board.html', {'posts': posts})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'site/post_detail.html', {'post': post})
+    return render(request, 'site/board.html', {'post': post})
 
 def post_new(request):
     form = PostForm()
