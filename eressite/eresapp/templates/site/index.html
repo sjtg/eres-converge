@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <header>
+    <header class="masthead">
         <div class="header-content">
             <div class="header-content-inner">
                 <div class="animated fadeInUp" id="title_header">
@@ -18,7 +18,7 @@
     <section class="bg-primary" id="aboutus">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-12 col-lg-offset-5 text-center">
                     <h2 class="section-heading">About us!</h2>
                     <hr>
                     <h3>ERES CONVERGE IRB</h3>
@@ -51,20 +51,20 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-md-offset-1 text-center">
+                <div class="col-lg-3 col-md-6 col-md-offset-5 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
                         <h3>Research</h3>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6col-md-offset-1 text-center">
+                <div class="col-lg-3 col-md-6 col-md-offset-5 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
                         <h3>Ethics</h3>
 
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-md-offset-1 text-center">
+                <div class="col-lg-3 col-md-6 col-md-offset-5 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
                         <h3>Training</h3>
@@ -74,7 +74,7 @@
         </div>
     </section>
 
-    <section id="team" class="bg-light-gray">
+    <!-- <section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -85,7 +85,6 @@
             <div id ="team_padding" class="row">
                 <div class="col-sm-3">
                     <div class="team-member">
-
                         <h4>Dr. Esther Munalula-Nkandu </h4>
                         <p class="text-muted">Board Chairperson</p>
 
@@ -129,23 +128,37 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <section class="map" id="directions">
+      <div class="row">
+      <div id="contact_details" class="col-lg-12 mx-auto text-center">
+          <h2 class="section-heading">Let's Get In Touch!</h2>
+       <i class="fa fa-map-marker fa-2x" aria-hidden="true"> Plot No. 1 Cnr. Great East Road  Joseph Mwilwa Road | Rhodes Park Lusaka - Zambia.</i>
+      </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 ml-auto text-center">
+            <i class="fa fa-phone fa-3x sr-contact"></i>
+            <p>Office : +260 955 155633 | +260 955 155634</p>
+          </div>
+          <div class="col-lg-6 mr-auto text-center">
+            <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+            <p>
+              <a href="mailto:contactus@eresconverge.org">Contact us</a>
+            </p>
+          </div>
+        </div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3846.433394085963!2d28.295834531046953!3d-15.40714262983941!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1469006944640" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
-           <div class="row">
-            <div id="contact_details" class="col-sm-5 col-md-offset-4">
-             <i class="fa fa-map-marker fa-2x" aria-hidden="true"> Plot No. 1 Cnr. Great East Road  Joseph Mwilwa Road | Rhodes Park Lusaka - Zambia.</i>
-            <i class="fa fa-phone-square fa-2x" aria-hidden="true"> Office : +260 955 155633 | +260 955 155634</i>
-            </div>
-
-            </div>
-            </div>
     </section>
 
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Joshua.Z.Chipile 2017</small>
+        </div>
+      </div>
 
-    <section>
-
-    </section>
+  </footer>
 {% endblock %}

@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^upload/$', views.UploadView.as_view(), name='upload'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    url(r'^reviewer/$', views.dashboard_reviewer, name='reviewer'),
 
 ]
