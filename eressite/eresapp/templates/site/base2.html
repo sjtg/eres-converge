@@ -41,9 +41,18 @@
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="{% url 'post_list' %}">Notice Board</a>
                 </li>
+{% if not user.is_authenticated %}
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a>
                 </li>
+{% endif  %}
+
+{% if user.is_authenticated %}
+  		<li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+{% endif %}
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="#directions">Contact</a>
                 </li>
