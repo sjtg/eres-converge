@@ -77,5 +77,13 @@
       <script src="{% static 'popper.min.js' %}"></script>
   <!-- Custom scripts for this template -->
   <script src="{% static 'js/creative.min.js' %}"></script>
+<script>
+$(function() {
+  $('a[href*=#]').on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+  });
+});
+</script>
         </body>
 </html>
