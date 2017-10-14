@@ -9,7 +9,7 @@ from .forms import SignUpForm
 
 from django.http import HttpResponse, HttpResponseRedirect
 
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404 ,render, redirect
 
 from django.utils import timezone
 from .models import Post
@@ -32,14 +32,15 @@ def home(request):
 
 def signup(request):
 	if request.method == 'POST':
-		form = SignUpForm(request.POST)
-		if form.is_valid():
-	 	    form.save()
-		    username = form.cleaned_data.get('username')
-		    raw_password = form.cleaned_data.get('password1')
-		    user = authenticate(username=username, password=raw_password)
-		    login(request, user)
-		    return redirect('dashboard')
+			form = SignUpForm(request.POST, instance = profile)
+			profile = Profile.objects.get(user = request.user)
+			if form.is_valid() and Profile_form. is_valid():
+		 	    form.save()
+			    username = form.cleaned_data.get('username')
+			    raw_password = form.cleaned_data.get('password1')
+			    user = authenticate(username=username, password=raw_password)
+			    login(request, user)
+			    return redirect('dashboard')
 	else:
 	    form = SignUpForm()
 	return render(request, 'site/signup.html', {'form':form})
@@ -63,13 +64,14 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'site/board.html', {'post': post})
+    return render(request, 'site/post_detail.html', {'post': post})
 
+@login_required(login_url='login')
 def post_new(request):
     form = PostForm()
     return render(request, 'site/post_edit.html', {'form': form})
 
-
+@login_required(login_url='login')
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":

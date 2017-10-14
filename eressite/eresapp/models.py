@@ -27,15 +27,15 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+        profile = Profile.objects.get_or_create(user=instance)
+        profile.save()
 
 
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
-    text  = models.TextField()
+    text  = models.TextField(max_length=400)
     created_date = models.DateTimeField( default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
