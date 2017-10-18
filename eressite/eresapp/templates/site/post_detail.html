@@ -14,17 +14,24 @@
         </div>
     </div>
 </header>
-<div class="jumbotron" id="posts">
 
-      <h1>{{ post.author }}</h1>
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.text|linebreaksbr }}</p>
-      {% if post.published_date %}
-          <div class="date">
-              {{ post.published_date }}
-          </div>
-      {% endif %}
-  </div>
+<section  id="contacts">
+
+              <div class="container" id="posts">
+                    <h1 class="section-header">Author: {{ post.author }}</h1>
+                    <h2>Title: {{ post.title }}</h2>
+                    <p>Post :{{ post.text|linebreaksbr }}</p>
+                    {% if post.published_date %}
+                        <div class="date">
+                            Date published date : {{ post.published_date }}
+                        </div>
+                    {% endif %}
+            </div>
+</section>
+
+<section>
+</section>
+
 
   <footer class="sticky-footer">
     <div class="container">
@@ -36,6 +43,4 @@
       <i class="fa fa-angle-up"></i>
     </a>
 </footer>
-
-
 {% endblock %}

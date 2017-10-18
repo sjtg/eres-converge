@@ -2,7 +2,7 @@
 
 {% block content %}
 
- <!-- Breadcrumbs-->
+      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
@@ -10,49 +10,44 @@
         <li class="breadcrumb-item active">{{user.username}}</li>
       </ol>
 
+      <button type="button" class="btn btn-primary js-upload-photos">
+        <span class="glyphicon glyphicon-cloud-upload"></span>Upload file
+      </button>
 
-<button type="button" class="btn btn-primary js-upload-photos">
-  <span class="glyphicon glyphicon-cloud-upload"></span>Upload file
-</button>
-
-<input id="fileupload" type="file" name="file" multiple
-       style="display: none;"
-       data-url="{% url 'upload' %}"
-       data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+      <input id="fileupload" type="file" name="file" multiple
+             style="display: none;"
+             data-url="{% url 'upload' %}"
+             data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
 
 
-<table id="gallery" class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Document</th>
-      <th>Date</th>
-      <th>Download</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for photo in photos %}
-      <tr>
-        <td>{{ photo.file.name }}</td>
-	<td>{{photo.uploaded_at}}</td>
-	<td><a href="{{ photo.file.url }}">Download</a></td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+      <table id="gallery" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Document</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for photo in photos %}
+            <tr>
+              <td><a href="{{ photo.file.url }}">{{ photo.file.name }}</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
-<div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Uploading...</h4>
-      </div>
-      <div class="modal-body">
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+      <div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Uploading...</h4>
+            </div>
+            <div class="modal-body">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
 {% endblock  %}

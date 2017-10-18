@@ -18,30 +18,28 @@
     </header>
 
  <!-- Main jumbotron for a primary marketing message or call to action -->
-<section id="notice">
-    <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">Welcome, {{user.username}}!</h1>
-        <p>Welcome to Eres Converge Notice Board section. Here you will find the lastest information</p>
-      </div>
-    </div>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-      {% for post in posts %}
-        <div class="col-md-4">
-          <h2>{{post.author}}</h2>
-          <h3>{{post.title}}</h3>
-          <a href="{% url 'post_detail' pk=post.pk %}">Read more</a>
-           <p>{{post.published_date }}</p>
-        </div>
-        {% endfor %}
+ <section  id="contacts" id="notice">
+       <div class="container">
+         <h1 class="display-3">Welcome, {{user.username}}!</h1>
+         <p>Welcome to Eres Converge Notice Board section. Here you will find the lastest information</p>
+       <div class="container">
+         <!-- Example row of columns -->
+         <div class="row">
+         {% for post in posts %}
+           <div class="col-md-4">
+             <h2>{{post.author}}</h2>
+             <h3>{{post.title}}</h3>
+             <a href="{% url 'post_detail' pk=post.pk %}">Read more</a>
+              <p>{{post.published_date }}</p>
+           </div>
+           {% endfor %}
+         </div>
+       </div> <!-- /container -->
+     </div>
+ </section>
 
-      </div>
-
-
-    </div> <!-- /container -->
+<section>
 </section>
 
     <footer class="sticky-footer">
