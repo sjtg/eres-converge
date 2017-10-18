@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
 
-from django.http import HttpResponse, HttpResponseRedirect
+# from django.http import HttpResponse, HttpResponseRedirect
 
-from django.shortcuts import get_object_or_404 ,render, redirect
+from django.shortcuts import get_object_or_404 , render, redirect
 
 from django.utils import timezone
 from .models import Post
@@ -68,8 +68,18 @@ def post_detail(request, pk):
 
 @login_required(login_url='login')
 def post_new(request):
-    form = PostForm()
-    return render(request, 'site/post_edit.html', {'form': form})
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirec('post_detail', pk=post.pk)
+        else:
+            form = PostForm(request.POST, instance=post)
+        return render(request, 'site/post_edit.html', {'form': form})
+
 
 @login_required(login_url='login')
 def post_edit(request, pk):
@@ -83,7 +93,7 @@ def post_edit(request, pk):
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(instance=post)
     return render(request, 'site/post_edit.html', {'form': form})
 
 

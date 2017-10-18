@@ -6,52 +6,49 @@
         <div class="header-content">
               <div class="container">
                 <!-- Example row of columns -->
-                <div class="row">
-                  <h1>Creata new a announment </h1>
+                <div class="section-content">
+          				<h1 class="section-header">Hi, <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">{{user.username}}!</span></h1>
+                  <h2>Edit post</h2>
                 </div>
-
 
               </div> <!-- /container -->
 
             </div>
     </header>
 
-    <section id="notice">
-        <div class="jumbotron">
-          <div class="container">
-            <h1 class="display-3">Welcome, {{user.username}}!</h1>
-            <p>Welcome to Eres Converge Notice Board section. Here you will find the lastest information</p>
-          </div>
-        </div>
-
-        <div id ="contacts">
-          <!-- Example row of columns -->
-          <div class="row">
-            <div class ="col-sm-12">
-              <h1>Welcome, {{user.username}}!</h1>
-
-            <h2>New post</h2>
-<form method="POST" class="post-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="save btn btn-default">Save</button>
-</form>
-</div>
-          </div>
 
 
-        </div> <!-- /container -->
+    <section  id="contacts">
+
+                  <div class="container">
+                  <h1 class="section-header">Edit Post</h1>
+                  <div style="width:30%">
+                      <form method="POST" class="post-form">
+                          {%csrf_token%}
+                          {% for error in form.non_field_errors %}
+                          <div class="form-group has-errors text-danger small">
+                              {{error}}
+                          </div>
+                          {% endfor %}
+                          {% for field in form %}
+                          <div class="form-group has-errors text-danger small">
+                              {{field.errors}}
+                          </div>
+                          <div class="form-group has-errors text-danger small">
+                          </div>
+                          <div class="form-group">
+                              {{field}}
+                          </div>
+                          {% endfor %}
+                          <button class="btn btn-primary" style="width:100%"> Submit</button>
+                  </div>
+                  </form>
+              </div>
+
+
+
     </section>
 
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Joshua.Z.Chipile 2017</small>
-        </div>
-      </div>
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-  </footer>
+
 
 {% endblock %}
