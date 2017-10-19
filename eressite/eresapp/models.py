@@ -47,8 +47,7 @@ class Post(models.Model):
         return self.title
 
 
-class Photo(models.Model):
-    user_upload = Post.author
+class Document(models.Model):
     title = models.CharField(max_length=255, blank=True)
-    file = models.FileField(upload_to='photos/')
+    file = models.FileField(upload_to='Documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)

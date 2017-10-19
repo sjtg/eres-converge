@@ -21,8 +21,8 @@ from django.views import View
 
 
 
-from .forms import PhotoForm
-from .models import Photo
+from .forms import DocumentForm
+from .models import Document
 
 
 # Create your views here.
@@ -50,13 +50,13 @@ def signup(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-	document_list = Photo.objects.all()
-        return render(request, 'site/dashboard.html', {'photos': document_list})
+	document_list = Document.objects.all()
+        return render(request, 'site/dashboard.html', {'documents': document_list})
 	#return render(request, 'site/dashboard.html')
 @login_required(login_url='login')
 def dashboard_reviewer(request):
-	document_list = Photo.objects.all()
-        return render(request, 'site/reviewer.html', {'photos': document_list})
+	document_list = Document.objects.all()
+        return render(request, 'site/reviewer.html', {'documents': document_list})
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -99,15 +99,15 @@ def post_edit(request, pk):
 
 class UploadView(View):
     	def get(self, request):
-	        document_list = Photo.objects.all()
-	        return render(self.request, 'site/uploads.html', {'photos': document_list})
+	        document_list = Document.objects.all()
+	        return render(self.request, 'site/uploads.html', {'documents': document_list})
 
 	 	def post(self, request):
-		        form = PhotoForm(self.request.POST, self.request.FILES)
+		        form = DocumentForm(self.request.POST, self.request.FILES)
 		        if form.is_valid():
-		            photo = form.save()
-			    photo.uploaded_at = timezone.now()
-		            data = {'is_valid': True, 'name': photo.file.name, 'url': photo.file.url}
+	            		document = form.save()
+		    		document.uploaded_at = timezone.now()
+	            		data = {'is_valid': True, 'name': document.file.name, 'url': document.file.url}
 		        else:
 		            data = {'is_valid': False}
 		        return JsonResponse({'message': 'Success'})

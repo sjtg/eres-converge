@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^board/post/(?P<pk>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^board/post/new/$', views.post_new, name='post_new'),
     url(r'^board/post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
-    url(r'^upload/$', views.UploadView.as_view(), name='upload'),
+    url(r'^uploads/$', views.UploadView.as_view(), name='uploads'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^reviewer/$', views.dashboard_reviewer, name='reviewer'),
 

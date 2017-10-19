@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 from .models import Post
 
-from .models import Photo
+from .models import Document
 
 Portal = [
     ('student', 'Students'),
@@ -33,7 +33,7 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'text',)
 
 
-class PhotoForm(forms.ModelForm):
+class DocumentForm(forms.ModelForm):
     class Meta:
-        model = Photo
+        model = Document
         fields = ('file', )

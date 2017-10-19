@@ -16,6 +16,7 @@
 <table id="gallery" class="table table-bordered">
   <thead>
     <tr>
+      <th>Author</th>
       <th>Document</th>
       <th>Date</th>
       <th>Download</th>
@@ -24,8 +25,9 @@
   <tbody>
     {% for photo in photos %}
       <tr>
-        <td>{{ photo.file.name }}</td>
-	<td>{{photo.uploaded_at}}</td>
+        <td>{{ document.user_upload }}</td>
+        <td>{{ document.file.name }}</td>
+	<td>{{document.uploaded_at}}</td>
 	<td><a href="{{ photo.file.url }}">Download</a></td>
       </tr>
     {% endfor %}
