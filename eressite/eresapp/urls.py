@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^uploads/$', views.UploadView.as_view(), name='uploads'),
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^reviewer/$', views.dashboard_reviewer, name='reviewer'),
+    url(r'^about/$', views.about, name='about'),
 
 ]

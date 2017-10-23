@@ -97,6 +97,9 @@ def post_edit(request, pk):
     return render(request, 'site/post_edit.html', {'form': form})
 
 
+def about(request):
+	return render(request, 'site/about.html', {})
+
 class UploadView(View):
     	def get(self, request):
 	        document_list = Document.objects.all()
