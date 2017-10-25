@@ -32,15 +32,15 @@ def home(request):
 
 def signup(request):
 	if request.method == 'POST':
-			form = SignUpForm(request.POST, instance = profile)
-			profile = Profile.objects.get(user = request.user)
-			if form.is_valid() and Profile_form. is_valid():
-		 	    form.save()
-			    username = form.cleaned_data.get('username')
-			    raw_password = form.cleaned_data.get('password1')
-			    user = authenticate(username=username, password=raw_password)
-			    login(request, user)
-			    return redirect('dashboard')
+		form = SignUpForm(request.POST, instance = profile)
+		profile = Profile.objects.get(user = request.user)
+		if form.is_valid():
+		  form.save()
+		  username = form.cleaned_data.get('username')
+	          raw_password = form.cleaned_data.get('password1')
+		  user = authenticate(username=username, password=raw_password)
+		  login(request, user)
+		  return redirect('dashboard')
 	else:
 	    form = SignUpForm()
 	return render(request, 'site/signup.html', {'form':form})
@@ -105,12 +105,12 @@ class UploadView(View):
 	        document_list = Document.objects.all()
 	        return render(self.request, 'site/uploads.html', {'documents': document_list})
 
-	 	def post(self, request):
-		        form = DocumentForm(self.request.POST, self.request.FILES)
-		        if form.is_valid():
-	            		document = form.save()
-		    		document.uploaded_at = timezone.now()
-	            		data = {'is_valid': True, 'name': document.file.name, 'url': document.file.url}
-		        else:
-		            data = {'is_valid': False}
-		        return JsonResponse({'message': 'Success'})
+	def post(self, request):
+		form = DocumentForm(self.request.POST, self.request.FILES)
+		if form.is_valid():
+	          	document = form.save()
+		    	document.uploaded_at = timezone.now()
+	            	data = {'is_valid': True, 'name': document.file.name, 'url': document.file.url}
+		else:
+		        data = {'is_valid': False}
+		return JsonResponse({'message': 'Success'})
