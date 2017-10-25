@@ -32,8 +32,8 @@ def home(request):
 
 def signup(request):
 	if request.method == 'POST':
-		form = SignUpForm(request.POST, instance = profile)
-		profile = Profile.objects.get(user = request.user)
+		form = SignUpForm(request.POST)
+		# profile = Profile.objects.get(user = request.user)
 		if form.is_valid():
 		  form.save()
 		  username = form.cleaned_data.get('username')
@@ -75,10 +75,10 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirec('post_detail', pk=post.pk)
-        else:
-            form = PostForm(request.POST, instance=post)
-        return render(request, 'site/post_edit.html', {'form': form})
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm(request.POST)
+    return render(request, 'site/post_edit.html', {'form': form})
 
 
 @login_required(login_url='login')

@@ -23,12 +23,12 @@
     </tr>
   </thead>
   <tbody>
-    {% for photo in photos %}
+    {% for document in documents %}
       <tr>
-        <td>{{ document.user_upload }}</td>
+        <td>{{document.user}}
         <td>{{ document.file.name }}</td>
 	<td>{{document.uploaded_at}}</td>
-	<td><a href="{{ photo.file.url }}">Download</a></td>
+	<td><a href="{{ document.file.url }}">Download</a></td>
       </tr>
     {% endfor %}
   </tbody>

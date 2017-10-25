@@ -28,7 +28,7 @@ class Profile(models.Model):
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
         profile = Profile.objects.get_or_create(user=instance)
-        profile.save()
+        instance.profile.save()
 
 
 
