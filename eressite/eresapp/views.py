@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
 
+from django.contrib.auth.models import User
+
 # from django.http import HttpResponse, HttpResponseRedirect
 
 from django.shortcuts import get_object_or_404 , render, redirect
@@ -108,6 +110,7 @@ class UploadView(View):
 	def post(self, request):
 		form = DocumentForm(self.request.POST, self.request.FILES)
 		if form.is_valid():
+			document = request.user
 	          	document = form.save()
 		    	document.uploaded_at = timezone.now()
 	            	data = {'is_valid': True, 'name': document.file.name, 'url': document.file.url}

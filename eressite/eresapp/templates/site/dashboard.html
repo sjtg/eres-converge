@@ -25,7 +25,7 @@
   <tbody>
     {% for document in documents %}
       <tr>
-        <td>{{document.user}}
+        <td>{{ document.user}}
         <td>{{ document.file.name }}</td>
 	<td>{{document.uploaded_at}}</td>
 	<td><a href="{{ document.file.url }}">Download</a></td>
