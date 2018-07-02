@@ -1,47 +1,91 @@
-{% extends 'site/base2.html' %}
+{% extends 'site/base4.html' %}
 
-{% block content %}
+{% load static %}
 
-    <header class="masthead">
-        <div class="header-content">
-            <div class="header-content-inner">
-                <div class="animated fadeInUp" id="title_header">
-                    ERES CONVERGE IRB
-                    <h2>RESEARCH ETHICS</h2>
-                    <a href="#contacts">  <button class="btn btn-primary" >Read More</button></a>
-                </div>
-            </div>
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+{% block content  %}
+
+<!-- parallax home page  -->
+<div class="parallax-container">
+
+
+    <!-- background image  -->
+    <div class="parallax">
+      <img src="{% static 'img/bg.jpg' %}" width="100%">
+      <div class="footers">
+    <p>Eres Converge<a href ="{% url 'home' %}"> Research Ethics</a></p>
+  </div>
+    </div>
+
+
+    <!-- code -->
+
+    <div class="container">
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="box">
+                <h4 >Eres Converge IRB</h4>
+                <p>Research Ethics</p>
+
+
+        <div class="container-3">
+          <form method="GET">
+            <!-- <input type="text" name="search" placeholder="Search Images"  /> -->
+            <input  type="text" name="searchs" placeholder=" Search...." value="{{request.GET.searchs}}" class="form-control"  id="search"  />
+            <!-- <input  class="btn btn-primary" type="submit" value="Search"  class="sub"/> -->
+            <span class="icon"><i class="material-icons">search</i></span>
+          </form>
+
+
         </div>
-    </header>
 
-    <!-- About Section -->
-    <section  id="contacts" id="about" >
-    			<div class="section-content">
-    				<h1 class="section-header">About <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">us!</span></h1>
-    			</div>
-    			<div class="contact-section">
-    			<div class="container">
+      </div>
+    </div>
+    </div>
+    </div>
 
-            <h3 class="section-content">ERES CONVERGE IRB</h3>
-            <hr class="underline">
-            <p class="text-faded">
-            ERES Converge is the only private IRB currently registered in Zambia. It is registered with the Office of Register of Companies in Lusaka Zambia.
-            </p>
+    <!-- ada -->
 
-            <h3 class="section-content">Do they follow national/international guidelines?</h3>
-            <hr class="underline">
-            <p class="text-faded">
-               ERES Converge IRB is accredited to the Office for Protection of Human Research Participants (OHRP) in the United States of America and so have an IRB number and a Federal Wide Assurance (FWA) number. As indicated above ERES Converge is registered as a Limited Company and has a Board of Directors.  It is locally accredited to the National Health Research Ethics Committee in the Zambia’s Ministry of Health which accredits all Research Ethics Committees and or IRBs in the country. The committee adheres to regulations as outlined in the Declaration of Helsinki, the Belmont Report, CIOMS and the International Guidelines for Biomedical Research. ERES Converge adheres strictly to International Standards of Good Clinical Practice.
-            </p>
 
-          <a href="{% url 'about' %}">  <button class="btn btn-primary" >Read More</button><br></a>
-    			</div>
-        </div>
+    <div class="row" style="margin-top: 20px">
+      <div class="container">
+        <h4 class="header">Find amazing content for your next project </h4>
+        <br>
+      </div>
 
-    		</section>
 
-<br>
-<br>
+    </div>
+
+</div>
+
+<!-- About Section -->
+      <section  id="contacts" id="about" >
+
+      <div class="contact-section">
+      <div class="container">
+        <h4 class="section-content">About us</h4>
+        <hr class="underline">
+        <p class="text-faded">
+        ERES Converge is the only private IRB currently registered in Zambia. It is registered with the Office of Register of Companies in Lusaka Zambia.
+        </p>
+
+        <h4 class="section-content">Do they follow national/international guidelines?</h4>
+        <hr class="underline">
+        <p class="text-faded">
+           ERES Converge IRB is accredited to the Office for Protection of Human Research Participants (OHRP) in the United States of America and so have an IRB number and a Federal Wide Assurance (FWA) number. As indicated above ERES Converge is registered as a Limited Company and has a Board of Directors.  It is locally accredited to the National Health Research Ethics Committee in the Zambia’s Ministry of Health which accredits all Research Ethics Committees and or IRBs in the country. The committee adheres to regulations as outlined in the Declaration of Helsinki, the Belmont Report, CIOMS and the International Guidelines for Biomedical Research. ERES Converge adheres strictly to International Standards of Good Clinical Practice.
+        </p>
+
+      <a href="{% url 'about' %}">  <button class="btn btn-primary" >Read More</button><br></a>
+      </div>
+    </div>
+
+    </section>
+
+
+
 
     <!-- Services Section -->
     <section id="services">
@@ -55,23 +99,24 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 text-center">
+                <div class="col s12 lg6 m4 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
                         <h3>Research</h3>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 text-center">
+                <div class="col s12 lg6 m4 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
                         <h3>Ethics</h3>
 
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4  text-center">
+                <div class="col s12 lg6 m4  text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
                         <h3>Training</h3>
+
                     </div>
                 </div>
             </div>
@@ -81,10 +126,10 @@
 
 <section  id="contacts" id="directions">
 			<div class="section-content">
-				<h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
-			</div>
+
 			<div class="contact-section">
 			<div class="container">
+        <h4>Get in touch with us</h4>
 				<form>
 					<div class="col-md-12">
             <div class="row">
@@ -118,15 +163,5 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3846.433394085963!2d28.295834531046953!3d-15.40714262983941!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1469006944640" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
     </section>
 
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Joshua.Z.Chipile 2017</small>
-        </div>
-      </div>
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-  </footer>
 
 {% endblock %}

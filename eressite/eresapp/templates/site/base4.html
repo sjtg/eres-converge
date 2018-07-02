@@ -1,0 +1,329 @@
+{% load static %}
+
+{% load staticfiles %}
+
+<!-- {% load static %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Eres Converge{% endblock %}</title>
+
+  <link href="{% static 'css/icon.css'%}" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" rel="stylesheet">
+  <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/accounts.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<!--  -->
+
+<style>
+body {
+    font-family: Helvetica;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+nav{
+  color: black;
+  font-family: Helvetica;
+}
+
+
+/* Search*/
+.form-control{
+
+}
+
+.box{
+  margin: 50% auto;
+  width: 200%;
+  height:5%;
+}
+
+.container-3{
+  width: 70%;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+.container-3 input#search{
+  opacity: 0.8;
+  width: 200%;
+  height: 60px;
+  background: #f0f0f0;
+  border: none;
+  font-size: 15pt;
+  float: left;
+  color: #039be5;
+  padding-left: 3.5%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #000000 ;
+  padding: 2px 12px;
+}
+
+.container-3 input#search::-webkit-input-placeholder {
+   color: #039be5 ;
+}
+
+.container-3 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;
+}
+
+.container-3 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;
+}
+
+.container-3 input#search:-ms-input-placeholder {
+   color: #65737e;
+}
+
+.container-3 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: -10%;
+  margin-top: 17px;
+  z-index: 2;
+  color: #039be5 ;
+
+   -webkit-transition: all .55s ease;
+  -moz-transition: all .55s ease;
+  -ms-transition: all .55s ease;
+  -o-transition: all .55s ease;
+  transition: all .55s ease;
+}
+
+
+.container-3 input#search:focus, .container-3 input#search:active{
+    outline:none;
+}
+
+.container-3:hover .icon{
+  margin-top: 16px;
+  color: #93a2ad;
+
+  -webkit-transform:scale(1.5); /* Safari and Chrome */
+  -moz-transform:scale(1.5); /* Firefox */
+  -ms-transform:scale(1.5); /* IE 9 */
+  -o-transform:scale(1.5); /* Opera */
+   transform:scale(1.5);
+  }
+
+  nav ul {
+
+    margin: 0;
+
+    padding: 0
+
+}
+
+
+
+/* end */
+
+
+/*form.searchs input[type=text] {
+    font-family: helvetica font;
+    margin-top: 50%;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 55%;
+    background: #f1f1f1;
+}
+
+form.searchs button {
+    margin-top: 50%;
+    padding: 8%;
+
+}
+
+/*form.searchs button:hover {
+    background: #0b7dda;
+    font-family: helvetica font;
+}*/
+
+/*form.search::after {
+    content: "";
+    clear: both;
+    display: table;
+}*/
+
+
+
+
+
+.footers {
+
+	 opacity: 0.8;
+   margin-top: 25.5%;
+   margin-bottom: -25.5%;
+
+   /*padding-left: 10%;*/
+   /*padding-right: 10%;*/
+   margin-bottom: : 5%;
+
+
+   height: 10%;
+   width: 200% auto;
+   background-color: #f0f0f0;
+   color: #555555.;
+   font-size: 12pt;
+   text-align: center;
+
+}
+
+.footer {
+  flex: none; /* 2 */
+}
+
+
+</style>
+
+
+
+<!-- <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script> -->
+<!-- <script src="{% static 'js/init.js' %}"></script> -->
+<script src="{% static 'js/init.js' %}"></script>
+
+
+
+<!-- <script src="{% static 'js/main.js' %}"></script> -->
+<!-- <script src="{% static 'js/materialize.js' %}"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script> -->
+
+
+
+
+
+</head>
+
+  </head>
+  <body style="font-family: Helvetica;">
+    {% include 'includes/header.html' %}
+
+    {% block content %}
+    {% endblock %}
+      <!-- share button  -->
+      <!-- share button  -->
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                  <a class="btn-floating waves-effect waves-light btn-large  light-blue darken-1 pulse">
+                      <i class="material-icons">share</i>
+                  </a>
+                  <ul>
+                    <li>
+                        <a class="btn-floating white" href="https://instagram.com" style="transform: scaleX(0.4) scaleY(0.4) translateY(40px) translateX(0px); opacity: 0;">
+                            <i class="material-icons">
+                                <img src="{% static 'img/instagram@3.png' %}" width="100%" class="scope-icon-cogni-ux-1" alt="">
+                            </i>
+                        </a>
+                    </li>
+                      <li>
+                          <a class="btn-floating white" href="https://facebook.com" style="transform: scaleX(0.4) scaleY(0.4) translateY(40px) translateX(0px); opacity: 0;">
+                              <i class="material-icons">
+                                  <img src="{% static 'img/facebook@3.png' %}" width="100%" class="scope-icon-cogni-ux-1" alt="">
+                              </i>
+                          </a>
+                      </li>
+                      <li>
+                          <a class="btn-floating white" href="https://twitter.com/?status=" style="transform: scaleX(0.4) scaleY(0.4) translateY(40px) translateX(0px); opacity: 0;">
+                              <i class="material-icons ">
+                                  <img src="{% static 'img/twitter@3.png' %}  " width="100%" class="scope-icon-cogni-ux-1 " alt=" ">
+                              </i>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+
+
+
+
+
+
+<footer class="page-footer  light-blue darken-1">
+  <div class="container">
+      <h5 class="center" class="header">Eres Converge IRB</h5>
+    <div class="row">
+      <div class="col s12 m3">
+        <h5 class="white-text">Research Ethics</h5>
+        <ul class="grey-text text-lighten-4">
+        <li ><a href="" class="grey-text text-lighten-3">Home</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">About Us</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">Subscribe / Renew</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">PhotoSharing Footage</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">PhotoSharing Music</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">PhotoSharing Blog</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">Design Tips & Tricks</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">Trending Topics</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">Press / Media</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">Careers</a></li>
+      </ul>
+      </div>
+      <div class="col s12 m3">
+        <h5 class="white-text">Help</h5>
+        <ul class="grey-text text-lighten-2">
+        <li ><a href="" class="grey-text text-lighten-3">Support Center</a></li>
+        <li ><a href="" class="grey-text text-lighten-3">Contact Us</a></li>
+      </ul>
+      <h5 class="white-text">Sales</h5>
+      <ul class="grey-text text-lighten-4">
+      <li ><a href="" class="grey-text text-lighten-3">(+260)xxxxxxxx</a></li>
+    </ul>
+      </div>
+      <div class="col s12 m3">
+        <h5 class="white-text">Legal</h5>
+        <ul>
+          <li>
+            <a href="#" class="grey-text text-lighten-3">Website Terms of Use</a>
+          </li>
+          <li>
+            <a href="#" class="grey-text text-lighten-3">License Agreement</a>
+          </li>
+          <li>
+            <a href="#" class="grey-text text-lighten-3">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#" class="grey-text text-lighten-3">Patents</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      <div class="center">
+      © 2018 Copyright <a href="http://www.chipileconsultant.com" class="white-text text-lighten-3" >Chipile Consultant</a>
+    </div>
+    </div>
+  </div>
+</footer>
+
+
+    {% block javascript %}
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/init.js' %}"></script>
+
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+
+    <script src="{% static 'js/materialize.js' %}"></script>
+
+
+    {% endblock %}
+  </body>
+</html>
