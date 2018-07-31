@@ -100,7 +100,10 @@ def post_edit(request, pk):
 
 
 def about(request):
-	return render(request, 'site/about.html', {})
+	return render(request, 'site/aboutus.html', {})
+
+def fees(request):
+	return render(request, 'site/fees.html', {})
 
 class UploadView(View):
     	def get(self, request):

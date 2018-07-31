@@ -1,0 +1,111 @@
+{% extends 'site/base4.html' %}
+
+{% load static %}
+
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+{% block content  %}
+
+<!-- parallax home page  -->
+
+<div class="slider">
+    <ul class="slides">
+      <li>
+
+        <img class="opa" src="{% static 'img/bg.jpg' %}">
+
+       <!-- random image -->
+        <div class="caption center-align">
+          <h3 class="black-text black-text  lighten-1"><b>Urban Africa</b></h3>
+          <h5 class="black-text black-text  lighten-1"><b>Urban Africa Zambia</b></h5>
+        </div>
+      </li>
+    </ul>
+</div>
+
+
+
+
+<!-- About us  -->
+
+<div class="container center-align">
+ <div id= "fees" class="section">
+    <div class="row">
+    <div class="col s12">
+      <h4>Fees</h4>
+      <p class="light center-align">
+        <ul class="">
+                <li>Expedited/ Fast track reviews - 4,000</li>
+                <li>Ordinary Review - 3,000</li>
+                <li>Extension of study period (renewal) - 1,200</li>
+                <li>Amendment to research proposal - 1,000</li>
+                <li>Penalty on late submissions of reports - 500</li>
+        </ul>
+      </p>
+
+        <h3 >Student Fees</h3>
+      <p class="light center-align">
+        <ul class = "text-faded">
+           <li>Expedited / Fast track - 4,000</li>
+           <li>Ordinary - 1,000</li>
+           <li>Amendment for Students - Free</li>
+        </ul>
+      </p>
+
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- About us end -->
+
+<!-- banner  -->
+<div class="parallax-container center valign-wrapper">
+  <div class="parallax">
+    <div class="opacities">
+      <img  src="{% static 'img/s4.jpg' %}" width="50%">
+    </div>
+
+  </div>
+
+  <div class="container white-text">
+    <div class="row">
+      <div class="col s12">
+        <h5>Commercial property development, primarily supermarket-led convenience retail and building supply stores</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end banner -->
+
+
+
+
+    <div class="container center-align">
+     <div id="contact" class="section">
+        <div class="row">
+        <div class="col s12">
+          <h4>Contact Us</h4>
+          <p class="light center-align">
+            Office : +260 955 155633 | +260 955 155634
+          </p>
+          <p class="light center-align">
+            <a href="mailto:contactus@eresconverge.org">Email</a>
+          </p>
+          <p class="light center-align">
+            Address: Plot No. 1 Cnr. Great East Road  Joseph Mwilwa Road | Rhodes Park Lusaka - Zambia.
+          </p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <section class="map" id="directions">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3846.433394085963!2d28.295834531046953!3d-15.40714262983941!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1469006944640" width="100%" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </section>
+
+
+{% endblock %}

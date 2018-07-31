@@ -1,0 +1,169 @@
+/* Navbar and opacity of the text */
+
+
+
+
+
+/*nav {z-index: 3;}
+header {z-index: 2;}
+#nav-bg {z-index: 1;}
+
+
+body {
+  background: #eee;
+}
+nav {
+	position: fixed;
+  top: 0;
+}
+header {
+  position: relative;
+  background-color: black;
+	padding: 30em;
+  padding-left: 20%;
+	height: 100vh;
+	&:before {
+		content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+  	background-size: cover;
+		background-repeat: no-repeat;
+    background-position: 65% 50%;
+		opacity: 0.4;*/
+    /*https://i.giphy.com/vYTo95h4e2j6M.gif*/
+	/*}
+}
+#nav-bg {
+  background: #ee6e73;
+  position: fixed;
+  height: 65px;
+  width: 100%;
+  top: 0;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
+}
+
+
+
+
+// DEMO STYLES - NOT REQUIRED
+header {
+	h1 {
+		font-size: 4em;
+		text-transform: uppercase;
+		text-align: center;
+		font-weight:800;
+		padding-top: 30vh;
+	}
+	p {
+		text-align: center;
+		font-size: 2em;
+		font-weight: 200;
+	}
+}
+
+#about {
+  background: #eee;
+  height: 70em;
+  padding: 5em 0;
+}
+*/
+
+/*body*/
+
+
+
+
+/* background image */
+{% load staticfiles %}
+{% load static %}
+
+
+nav {z-index: 3;}
+header {z-index: 2;}
+#nav-bg {z-index: 1;}
+
+nav {
+	position: fixed;
+  top: 0;
+}
+header {
+  position: relative;
+  background-color: black;
+	padding: 30em;
+  padding-left: 20%;
+	height: 100vh;
+	&:before {
+		content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+  	background-size: cover;
+		background-repeat: no-repeat;
+    background-position: 65% 50%;
+		opacity: 0.4;
+    /*https://i.giphy.com/vYTo95h4e2j6M.gif*/
+	}
+}
+#nav-bg {
+  background: #ee6e73;
+  position: fixed;
+  height: 65px;
+  width: 100%;
+  top: 0;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
+}
+
+
+/* end of background image  */
+body{
+  color: #555555;
+  font-family: helvetica font;
+  /*font-size: 20px;*/
+}
+
+nav{
+  color: black;
+  font-family: helvetica font;
+}
+
+/* Top left text */
+.text-blocks {
+    /*opacity: 0.7;*/
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    /*background-color: black;*/
+    color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+
+
+/* Bottom right text */
+.text-block {
+    /*opacity: 0.7;*/
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+    /*background-color: black;*/
+    color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
+/* header */
+.header{
+
+  font-size: 24px;
+}
