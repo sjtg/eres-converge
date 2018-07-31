@@ -18,7 +18,9 @@
     <li><a href="{% url 'about' %}">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="{% url 'fees' %}">Fees</a></li>
+    {% if user.is_authenticated %}
     <li><a href="{% url 'dashboard' %}">Portal</a></li>
+    {% endif %}
     <li><a href="#">Notice Board</a></li>
     <li><a href="#directions">Contact us</a></li>
     <!-- Dropdown Trigger -->
@@ -37,7 +39,9 @@
   <li><a href="{% url 'about' %}">About</a></li>
   <li><a href="#services">Services</a></li>
   <li><a href="{% url 'fees' %}">Fees</a></li>
+  {% if user.is_authenticated %}
   <li><a href="{% url 'dashboard' %}">Portal</a></li>
+  {% endif %}
   <li><a href="#">Notice Board</a></li>
   <li><a href="#directions">Contact us</a></li>
 

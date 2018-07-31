@@ -34,18 +34,24 @@ def update_user_profile(sender, instance, created, **kwargs):
 
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     title = models.CharField(max_length=200)
-    text  = models.TextField(max_length=400)
-    created_date = models.DateTimeField(User, default=timezone.now)
-    published_date = models.DateTimeField(User, blank=True, null=True)
+    text = models.TextField()
+    blog_images = models.FileField(upload_to='photos/blog', blank=False, null=True)
+    created_date = models.DateTimeField(
+        default=timezone.now
+    )
+    published_date = models.DateTimeField(
+        blank=True, null=True
+    )
 
-    def publis(self):
-        self.published_date = timezone.now()
-        self.save()
+    # def publish(self):
+    #     self.published_date = timezone.now()
+    #     self.save()
 
-    def __str__(self):
-        return self.title
+    def __unicode__(self):
+        title = str(self.title)
+        return title
 
 
 class Document(models.Model):
