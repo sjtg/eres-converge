@@ -20,7 +20,7 @@
     {% if user.is_authenticated %}
     <li><a href="{% url 'dashboard' %}">Portal</a></li>
     {% endif %}
-    <li><a href="#">Notice Board</a></li>
+    <li><a href="{% url 'PostList' %}">Notice Board</a></li>
     <li><a href="#directions">Contact us</a></li>
     <!-- Dropdown Trigger -->
 
@@ -41,7 +41,7 @@
   {% if user.is_authenticated %}
   <li><a href="{% url 'dashboard' %}">Portal</a></li>
   {% endif %}
-  <li><a href="#">Notice Board</a></li>
+  <li><a href="{% url 'PostList' %}">Notice Board</a></li>
   <li><a href="#directions">Contact us</a></li>
 
     </ul>
