@@ -1,39 +1,27 @@
+from django.core.files import File
 from django import forms
-
 from django.contrib.auth.forms import UserCreationForm
-
-from django.contrib.auth.admin import UserAdmin
-
 from django.contrib.auth.models import User
-
-from .models import Post
-
-from .models import Document
-
-Portal = [
-    ('student', 'Students'),
-    ('reviewer', 'Reviewer'),
-]
-
-class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text='First name')
-    last_name = forms.CharField(max_length=30, required=False, help_text='Last name')
-    email = forms.EmailField(max_length=254, help_text='Required')
-    telephone = forms.CharField(max_length=30, required=False, help_text='Telephone')
-    portals = forms.CharField(label='Select which occupation', widget=forms.Select(choices=Portal))
-
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email','telephone','portals', 'password1', 'password2', )
+from .models import *
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text',)
+        fields = ('title', 'text', 'blog_images')
 
-
-class DocumentForm(forms.ModelForm):
+class DocumentsForm(forms.ModelForm):
     class Meta:
-        model = Document
-        fields = ('file', )
+        model = Documents
+        fields = ('title','reference','description', 'docs')
+
+class ReviewerForm(forms.ModelForm):
+    class Meta:
+        model = Reviewer
+        fields = ('title','reference','comments', 'docs')
+
+
+class FeesForm(forms.ModelForm):
+    class Meta:
+        model = Fees
+        fields = ('title', 'name', 'prices' )

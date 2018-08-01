@@ -1,75 +1,57 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.contrib.auth import login, authenticate
-
 from django.contrib.auth.decorators import login_required
-
-from .forms import SignUpForm
-
 from django.contrib.auth.models import User
-
 # from django.http import HttpResponse, HttpResponseRedirect
-
-from django.shortcuts import get_object_or_404 , render, redirect
-
+from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from django.utils import timezone
-from .models import Post
-
-from .forms import PostForm
-
 from django.http import JsonResponse
 from django.views import View
+from .forms import *
+from .models import *
 
 
-
-from .forms import DocumentForm
-from .models import Document
-
-
-# Create your views here.
-
-def home(request):
+# Home Page
+def HomePage(request):
 	return render(request, 'site/index.html', {})
 
-def signup(request):
-	if request.method == 'POST':
-		form = SignUpForm(request.POST)
-		# profile = Profile.objects.get(user = request.user)
-		if form.is_valid():
-		  form.save()
-		  username = form.cleaned_data.get('username')
-	          raw_password = form.cleaned_data.get('password1')
-		  user = authenticate(username=username, password=raw_password)
-		  login(request, user)
-		  return redirect('dashboard')
-	else:
-	    form = SignUpForm()
-	return render(request, 'site/signup.html', {'form':form})
+#About us section
+def Aboutus(request):
+	return render(request, 'site/aboutus.html', {})
+
+# Fees Section
+def Fees(request):
+	return render(request, 'site/fees.html', {})
 
 
-
-
+#Dashboard Section
 @login_required(login_url='login')
-def dashboard(request):
-	document_list = Document.objects.all()
-        return render(request, 'site/dashboard.html', {'documents': document_list})
+def Dashboard(request):
+	DocumentList = Documents.objects.all()
+    	return render(request, 'site/dashboard.html', {'new_doc': DocumentList})
 	#return render(request, 'site/dashboard.html')
+
+#Reviewer Section
 @login_required(login_url='login')
 def dashboard_reviewer(request):
-	document_list = Document.objects.all()
-        return render(request, 'site/reviewer.html', {'documents': document_list})
+	ReviewerList = Documents.objects.all()
+    	return render(request, 'site/reviewer.html', {'review_doc': ReviewerList})
 
-def post_list(request):
+#Blog section
+def PostList(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'site/board.html', {'posts': posts})
 
-def post_detail(request, pk):
+#Blog detail
+def PostDetail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'site/post_detail.html', {'post': post})
 
+#New Blog
 @login_required(login_url='login')
-def post_new(request):
+def PostNew(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
@@ -82,9 +64,9 @@ def post_new(request):
         form = PostForm(request.POST)
     return render(request, 'site/post_edit.html', {'form': form})
 
-
+#Edit blog
 @login_required(login_url='login')
-def post_edit(request, pk):
+def PostEdit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
@@ -99,24 +81,73 @@ def post_edit(request, pk):
     return render(request, 'site/post_edit.html', {'form': form})
 
 
-def about(request):
-	return render(request, 'site/aboutus.html', {})
 
-def fees(request):
-	return render(request, 'site/fees.html', {})
 
-class UploadView(View):
-    	def get(self, request):
-	        document_list = Document.objects.all()
-	        return render(self.request, 'site/uploads.html', {'documents': document_list})
 
-	def post(self, request):
-		form = DocumentForm(self.request.POST, self.request.FILES)
-		if form.is_valid():
-			document = request.user
-	          	document = form.save()
-		    	document.uploaded_at = timezone.now()
-	            	data = {'is_valid': True, 'name': document.file.name, 'url': document.file.url}
-		else:
-		        data = {'is_valid': False}
-		return JsonResponse({'message': 'Success'})
+# New Document
+@login_required
+def NewDocs(request):
+    if request.method == "POST":
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_doc = form.save()
+            new_doc.user = request.user
+            new_doc.published_date = timezone.now()
+            new_doc.save()
+            # return redirect('home',)
+            return redirect('doc_detail', pk=new_doc.pk)
+    else:
+        form = DocumentsForm()
+        # form = PostForm(request.POST, instance=new_post)
+    return render(request, 'site/uploads.html', {'form' : form})
+
+#Edit Document
+@login_required(login_url='login')
+def DocsEdit(request, pk):
+    post = get_object_or_404(Documents, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            docs = form.save(commit=False)
+            docs.author = request.user
+            docs.published_date = timezone.now()
+            docs.save()
+            return redirect('docs_detail', pk=new_doc.pk)
+    else:
+        form = DocumentsForm(instance=post)
+    return render(request, 'site/upload_edit.html', {'form': form})
+
+
+@login_required
+def ReviewerDocs(request):
+    if request.method == "POST":
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            review_doc = form.save()
+            review_doc.user = request.user
+            review_doc.published_date = timezone.now()
+            review_doc.save()
+            # return redirect('home',)
+            return redirect('review_detail', pk=review_doc.pk)
+    else:
+        form = ResearchForm()
+        # form = PostForm(request.POST, instance=new_post)
+    return render(request, 'site/uploads.html', {'form' : form})
+
+
+
+# class UploadView(View):
+#     	def get(self, request):
+# 	        document_list = Document.objects.all()
+# 	        return render(self.request, 'site/uploads.html', {'documents': document_list})
+#
+# 	def post(self, request):
+# 		form = DocumentForm(self.request.POST, self.request.FILES)
+# 		if form.is_valid():
+# 			document = request.user
+# 	          	document = form.save()
+# 		    	document.uploaded_at = timezone.now()
+# 	            	data = {'is_valid': True, 'name': document.file.name, 'url': document.file.url}
+# 		else:
+# 		        data = {'is_valid': False}
+# 		return JsonResponse({'message': 'Success'})

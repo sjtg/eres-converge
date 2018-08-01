@@ -1,19 +1,6 @@
-{% extends 'site/base2.html' %}
+{% extends 'site/base4.html' %}
 
 {% block content %}
-<header class="masthead">
-    <div class="header-content">
-        <div class="header-content-inner">
-            <div class="animated fadeInUp" id="title_header">
-                ERES CONVERGE IRB
-                <h2>RESEARCH ETHICS</h2>
-                <a href="#contacts">  <button class="btn btn-primary" >Read More</button></a>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section  id="contacts">
 
               <div class="container" id="posts">
                     <h1 class="section-header">Author: {{ post.author }}</h1>
@@ -25,20 +12,6 @@
                         </div>
                     {% endif %}
             </div>
-</section>
-
-<section>
-</section>
 
 
-  <footer class="sticky-footer">
-    <div class="container">
-      <div class="text-center">
-        <small>Copyright © Joshua.Z.Chipile 2017</small>
-      </div>
-    </div>
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-</footer>
 {% endblock %}
