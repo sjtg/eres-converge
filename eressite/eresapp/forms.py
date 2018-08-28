@@ -8,7 +8,7 @@ from .models import *
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text', 'blog_images')
+        fields = ('Title', 'Text', 'BlogImages')
 
 class DocumentsForm(forms.ModelForm):
     class Meta:

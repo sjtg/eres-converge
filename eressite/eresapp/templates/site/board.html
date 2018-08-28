@@ -1,54 +1,51 @@
-{% extends 'site/base2.html' %}
+{% extends 'site/base4.html' %}
+{% load static %}
 
+{% load staticfiles %}
+
+{% load widget_tweaks %}
 {% block content %}
 
-    <header class="masthead">
-        <div class="header-content">
-            <div class="header-content-inner">
-                <div class="animated fadeInUp" id="title_header">
-                    Notice Board
-                    <h2>All Announcement</h2>
-		                <a href="#contacts">  <button class="btn btn-primary" >Read More</button></a>
-                </div>
 
-            </div>
-        </div>
-    </header>
+<div class="container">
+  <div class="left card-title">
+        <h4>Notice Board</h4>
+  </div>
+  <div class="row justify-content-center">
 
- <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="col s12 lg3">
 
- <section  id="contacts" id="notice">
-       <div class="container">
-         <h1 class="display-3">Welcome, {{user.username}}!</h1>
-         <p>Welcome to Eres Converge Notice Board section. Here you will find the lastest information</p>
-       <div class="container">
-         <!-- Example row of columns -->
-         <div class="row">
-         {% for post in posts %}
-           <div class="col-md-4">
-             <h2>{{post.author}}</h2>
-             <h3>{{post.title}}</h3>
-             <a href="{% url 'post_detail' pk=post.pk %}">Read more</a>
-              <p>{{post.published_date }}</p>
+      <div class="row" style="margin-top: 20px">
+
+ {% for PostBlog in PostLists %}
+ <div class="col s12 m4">
+   <!--  -->
+         <div class="card">
+           <div class="card-image">
+             <!-- <img src="{{ PostBlog.BlogImages.url }}" width="10%" class="thumbnail" > -->
+
            </div>
-           {% endfor %}
+           <div class="card-content">
+             <span class="card-title" style="font-size:14px;"><b>{{PostBlog.Title}}</b></span>
+
+           </div>
+           <div class="card-action">
+             <a class=" light-blue darken-1 waves-effect waves-light btn" href="{% url 'PostDetail' pk=PostBlog.pk %}">Read more </a>
+           </div>
          </div>
-       </div> <!-- /container -->
-     </div>
- </section>
 
-<section>
-</section>
 
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Joshua.Z.Chipile 2017</small>
-        </div>
-      </div>
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-      </a>
-  </footer>
+
+
+   {% if forloop.counter|divisibleby:4 %}</div><div class="row">{% endif %}
+           {% if forloop.last %}</div>{% endif %}
+   </div>
+ {% endfor %}
+ </div>
+ </div>
+ </div>
+
+
+
 
 {% endblock %}

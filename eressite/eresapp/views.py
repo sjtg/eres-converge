@@ -41,13 +41,13 @@ def dashboard_reviewer(request):
 
 #Blog section
 def PostList(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'site/board.html', {'posts': posts})
+    PostLists = Post.objects.all().order_by('-PublishedDate')
+    return render(request, 'site/board.html', {'PostLists': PostLists})
 
 #Blog detail
 def PostDetail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'site/post_detail.html', {'post': post})
+    PostDetails = get_object_or_404(Post, pk=pk)
+    return render(request, 'site/post_detail.html', {'PostDetails': PostDetails})
 
 #New Blog
 @login_required(login_url='login')
@@ -59,7 +59,7 @@ def PostNew(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('PostDetail', pk=post.pk)
     else:
         form = PostForm(request.POST)
     return render(request, 'site/post_edit.html', {'form': form})
@@ -75,7 +75,7 @@ def PostEdit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('PostDetail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'site/post_edit.html', {'form': form})
