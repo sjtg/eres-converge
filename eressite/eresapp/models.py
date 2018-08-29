@@ -8,6 +8,26 @@ from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 from django.db  import models
 
+# About us
+class Aboutus(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    AboutText = models.TextField()
+
+    def __unicode__(self):
+        AboutText = str(self.AboutText)
+        return AboutText
+
+
+class Services(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    ServicesTitle = models.CharField(max_length=200)
+    ServicesText = models.TextField()
+
+    def __unicode__(self):
+        ServicesTitle = str(self.ServicesTitle)
+        return ServicesTitle
+
+
 
 #News Letter and Blogs
 class Post(models.Model):
